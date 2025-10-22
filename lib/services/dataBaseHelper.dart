@@ -79,13 +79,13 @@ class DatabaseHelper {
       {
         'name': 'King of Hearts',
         'suit': 'Hearts',
-        'image_url': 'assets/images/king_hearts.png',
+        'image_url': 'assets/images/king_hearts.jpg',
         'folder_id': 1,
       },
       {
         'name': 'Queen of Hearts',
         'suit': 'Hearts',
-        'image_url': 'assets/images/queen_hearts.png',
+        'image_url': 'assets/images/queen_hearts.jpg',
         'folder_id': 1,
       },
       {
@@ -97,13 +97,13 @@ class DatabaseHelper {
       {
         'name': 'King of Spades',
         'suit': 'Spades',
-        'image_url': 'assets/images/king_spades.png',
+        'image_url': 'assets/images/king_spades.jpg',
         'folder_id': 2,
       },
       {
         'name': 'Queen of Spades',
         'suit': 'Spades',
-        'image_url': 'assets/images/queen_spades.png',
+        'image_url': 'assets/images/queen_spades.jpg',
         'folder_id': 2,
       },
       {
@@ -115,13 +115,13 @@ class DatabaseHelper {
       {
         'name': 'King of Diamonds',
         'suit': 'Diamonds',
-        'image_url': 'assets/images/king_diamonds.png',
+        'image_url': 'assets/images/king_diamonds.webp',
         'folder_id': 3,
       },
       {
         'name': 'Queen of Diamonds',
         'suit': 'Diamonds',
-        'image_url': 'assets/images/queen_diamonds.png',
+        'image_url': 'assets/images/queen_diamonds.jpg',
         'folder_id': 3,
       },
       {
@@ -133,13 +133,13 @@ class DatabaseHelper {
       {
         'name': 'King of Clubs',
         'suit': 'Clubs',
-        'image_url': 'assets/images/king_clubs.png',
+        'image_url': 'assets/images/king_clubs.jpg',
         'folder_id': 4,
       },
       {
         'name': 'Queen of Clubs',
         'suit': 'Clubs',
-        'image_url': 'assets/images/queen_clubs.png',
+        'image_url': 'assets/images/queen_clubs.jpg',
         'folder_id': 4,
       },
     ];

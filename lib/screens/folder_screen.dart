@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../services/dataBaseHelper.dart';
+import 'cards_screen.dart';
 
 class FoldersScreen extends StatefulWidget {
   const FoldersScreen({super.key});
@@ -73,7 +74,15 @@ class _FoldersScreenState extends State<FoldersScreen> {
 
                   return GestureDetector(
                     onTap: () {
-                      // TODO: Navigate to Cards Screen for this folder
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => CardsScreen(
+                            folderId: folder['id'],
+                            folderName: folder['folder_name'],
+                          ),
+                        ),
+                      );
                     },
                     child: Card(
                       elevation: 4,
