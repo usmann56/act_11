@@ -70,18 +70,78 @@ class DatabaseHelper {
 
     // Inserting cards
     final sampleCards = [
-      {'name': 'Ace of Hearts', 'suit': 'Hearts', 'image_url': 'assets/images/ace_hearts.png', 'folder_id': 1},
-      {'name': 'King of Hearts', 'suit': 'Hearts', 'image_url': 'assets/images/king_hearts.png', 'folder_id': 1},
-      {'name': 'Queen of Hearts', 'suit': 'Hearts', 'image_url': 'assets/images/queen_hearts.png', 'folder_id': 1},
-      {'name': 'Ace of Spades', 'suit': 'Spades', 'image_url': 'assets/images/ace_spades.png', 'folder_id': 2},
-      {'name': 'King of Spades', 'suit': 'Spades', 'image_url': 'assets/images/king_spades.png', 'folder_id': 2},
-      {'name': 'Queen of Spades', 'suit': 'Spades', 'image_url': 'assets/images/queen_spades.png', 'folder_id': 2},
-      {'name': 'Ace of Diamonds', 'suit': 'Diamonds', 'image_url': 'assets/images/ace_diamonds.png', 'folder_id': 3},
-      {'name': 'King of Diamonds', 'suit': 'Diamonds', 'image_url': 'assets/images/king_diamonds.png', 'folder_id': 3},
-      {'name': 'Queen of Diamonds', 'suit': 'Diamonds', 'image_url': 'assets/images/queen_diamonds.png', 'folder_id': 3},
-      {'name': 'Ace of Clubs', 'suit': 'Clubs', 'image_url': 'assets/images/ace_clubs.png', 'folder_id': 4},
-      {'name': 'King of Clubs', 'suit': 'Clubs', 'image_url': 'assets/images/king_clubs.png', 'folder_id': 4},
-      {'name': 'Queen of Clubs', 'suit': 'Clubs', 'image_url': 'assets/images/queen_clubs.png', 'folder_id': 4},
+      {
+        'name': 'Ace of Hearts',
+        'suit': 'Hearts',
+        'image_url': 'assets/images/ace_hearts.jpg',
+        'folder_id': 1,
+      },
+      {
+        'name': 'King of Hearts',
+        'suit': 'Hearts',
+        'image_url': 'assets/images/king_hearts.png',
+        'folder_id': 1,
+      },
+      {
+        'name': 'Queen of Hearts',
+        'suit': 'Hearts',
+        'image_url': 'assets/images/queen_hearts.png',
+        'folder_id': 1,
+      },
+      {
+        'name': 'Ace of Spades',
+        'suit': 'Spades',
+        'image_url': 'assets/images/ace_spades.jpg',
+        'folder_id': 2,
+      },
+      {
+        'name': 'King of Spades',
+        'suit': 'Spades',
+        'image_url': 'assets/images/king_spades.png',
+        'folder_id': 2,
+      },
+      {
+        'name': 'Queen of Spades',
+        'suit': 'Spades',
+        'image_url': 'assets/images/queen_spades.png',
+        'folder_id': 2,
+      },
+      {
+        'name': 'Ace of Diamonds',
+        'suit': 'Diamonds',
+        'image_url': 'assets/images/ace_diamonds.webp',
+        'folder_id': 3,
+      },
+      {
+        'name': 'King of Diamonds',
+        'suit': 'Diamonds',
+        'image_url': 'assets/images/king_diamonds.png',
+        'folder_id': 3,
+      },
+      {
+        'name': 'Queen of Diamonds',
+        'suit': 'Diamonds',
+        'image_url': 'assets/images/queen_diamonds.png',
+        'folder_id': 3,
+      },
+      {
+        'name': 'Ace of Clubs',
+        'suit': 'Clubs',
+        'image_url': 'assets/images/ace_clubs.webp',
+        'folder_id': 4,
+      },
+      {
+        'name': 'King of Clubs',
+        'suit': 'Clubs',
+        'image_url': 'assets/images/king_clubs.png',
+        'folder_id': 4,
+      },
+      {
+        'name': 'Queen of Clubs',
+        'suit': 'Clubs',
+        'image_url': 'assets/images/queen_clubs.png',
+        'folder_id': 4,
+      },
     ];
     //Inserting each card and its meta data into the cards table
     for (Map<String, dynamic> card in sampleCards) {
@@ -147,4 +207,6 @@ class DatabaseHelper {
       whereArgs: [id],
     );
   }
+
+  Database get database => _db;
 }
