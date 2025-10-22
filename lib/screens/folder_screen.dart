@@ -46,6 +46,78 @@ class _FoldersScreenState extends State<FoldersScreen> {
     });
   }
 
+  Future<void> _showDeleteConfirmationDialog(
+    int folderId,
+    String folderName,
+  ) async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Delete Folder'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(
+                  'Are you sure you want to delete "$folderName" and all its cards?',
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: const Text('Delete', style: TextStyle(color: Colors.red)),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                await _deleteFolder(folderId);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _deleteFolder(int folderId) async {
+    final db = _dbHelper.database;
+
+    try {
+      await db.transaction((txn) async {
+        await txn.delete(
+          DatabaseHelper.cardsTable,
+          where: '${DatabaseHelper.cardColumnFolderId} = ?',
+          whereArgs: [folderId],
+        );
+        await txn.delete(
+          DatabaseHelper.foldersTable,
+          where: '${DatabaseHelper.folderColumnId} = ?',
+          whereArgs: [folderId],
+        );
+      });
+
+      await _fetchFolders();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Folder deleted successfully.'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error deleting folder: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +151,7 @@ class _FoldersScreenState extends State<FoldersScreen> {
                         MaterialPageRoute(
                           builder: (_) => CardsScreen(
                             folderId: folder['id'],
-                            folderName: folder['folder_name'],
+                            folderName: folderName,
                           ),
                         ),
                       );
@@ -121,6 +193,15 @@ class _FoldersScreenState extends State<FoldersScreen> {
                                 color: Colors.grey,
                                 fontSize: 14,
                               ),
+                            ),
+                            const SizedBox(height: 6),
+                            IconButton(
+                              icon: const Icon(Icons.delete, color: Colors.red),
+                              onPressed: () => _showDeleteConfirmationDialog(
+                                folder['id'],
+                                folderName,
+                              ),
+                              tooltip: 'Delete Folder',
                             ),
                           ],
                         ),
